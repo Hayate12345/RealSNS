@@ -29,8 +29,13 @@ mongoose.connect(process.env.MONGOURL).then(() => {
 
 // ミドルウェアの設計（中間システムの設計）,
 // useの第一引数にエンドポイント、第二引数に実行する関数
+app.use(express.json());
 app.use('/api/user', userRoute);
 app.use('/api/certification', certificationRoute);
 app.use('/api/posts', postsRoute);
+
+// app.get('/', (req, res) => {
+//   res.send('Hello Express');
+// });
 
 app.listen(PORT, () => console.log('サーバーが起動しました。'));
