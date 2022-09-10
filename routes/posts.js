@@ -1,5 +1,3 @@
-const { post } = require('./users');
-
 // expressの読み込み
 const posts = require('express').Router();
 
