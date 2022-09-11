@@ -36,11 +36,11 @@ router.post('/login', async (req, res) => {
   try {
     // Emailを基準にDBから値を参照
     const user = await User.findOne({ email: req.body.email });
-    if (!user) return res.status(404).send('ユーザーが存在しません');
+    if (!user) return res.status(404).send('認証に失敗しました。');
 
     // DBのパスワードとユーザーが入力したパスワードの比較
     const userPassword = req.body.password === user.password;
-    if (!userPassword) return res.status(400).json('パスワードが違います');
+    if (!userPassword) return res.status(400).json('認証に失敗しました。');
 
     // エラーがない時の処理
     return res.status(200).json(user);
